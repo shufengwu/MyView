@@ -7,16 +7,63 @@
     tools:context="com.delta.myview.MainActivity">
 
     <com.delta.myview.MyTitleView
+        android:id="@+id/mtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         my:titleText="wsf"
         my:titleTextColor="#000000"
-        my:titleTextSize="40sp"
-        android:layout_centerInParent="true"/>
-    <!--<com.delta.myview.MyImageView
+        my:titleTextSize="40sp" />
+
+    <com.delta.myview.MyImageView
         android:id="@+id/miv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        my:image=""/>-->
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        my:image="@mipmap/ic_launcher"
+        my:imageScaleType="fillXY"
+        my:titleText="hehehehehehehehehehehe"
+        my:titleTextColor="#0000FF"
+        my:titleTextSize="20sp" />
+
+    <com.delta.myview.MyImageView
+        android:id="@+id/miv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/miv1"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        my:image="@mipmap/ic_launcher"
+        my:imageScaleType="center"
+        my:titleText="hehehehehehehehehehehe"
+        my:titleTextColor="#0000FF"
+        my:titleTextSize="20sp" />
+
+    <com.delta.myview.MyImageView
+        android:id="@+id/miv3"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/miv2"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        my:image="@mipmap/ic_launcher"
+        my:imageScaleType="center"
+        my:titleText="hehehehehehehehehehehehhehehehe"
+        my:titleTextColor="#0000FF"
+        my:titleTextSize="20sp" />
+
+    <com.delta.myview.MyImageView
+        android:id="@+id/miv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/miv3"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        my:image="@mipmap/ic_launcher"
+        my:imageScaleType="center"
+        my:titleText="he"
+        my:titleTextColor="#0000FF"
+        my:titleTextSize="20sp" />
 
 </RelativeLayout>

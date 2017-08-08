@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.media.Image;
 import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -21,6 +20,8 @@ import android.view.View;
  */
 
 public class MyImageView extends View {
+    int width = 0;
+    int height = 0;
     private String mTitleText;
     private int mTitleTextColor;
     private int mTitleTextSize;
@@ -29,8 +30,6 @@ public class MyImageView extends View {
     private Rect rect;
     private Paint mPaint;
     private Rect mTextRect;
-    int width=0;
-    int height=0;
 
     public MyImageView(Context context) {
         this(context, null);
@@ -84,24 +83,24 @@ public class MyImageView extends View {
 
 
         if (specMode == MeasureSpec.EXACTLY) { //判断是否是明确的值
-            width = getPaddingLeft() + getPaddingRight() + specSize;
+            width = specSize;
         } else {
             int desireByImg = getPaddingLeft() + getPaddingRight() + mImage.getWidth();
             int desireByTitle = getPaddingLeft() + getPaddingRight() + mTextRect.width();
             if (specMode == MeasureSpec.AT_MOST) { // wrap_content
                 int desire = Math.max(desireByImg,desireByTitle);
-                width = Math.min(getPaddingLeft() + getPaddingRight() + specSize,desire);
+                width = Math.min(specSize, desire);
             }
         }
 
         specMode = MeasureSpec.getMode(heightMeasureSpec);
         specSize = MeasureSpec.getSize(heightMeasureSpec);
         if(specMode==MeasureSpec.EXACTLY){
-            height = getPaddingTop() + getPaddingBottom() + specSize;
+            height = specSize;
         }else{
             int desire = getPaddingTop() + getPaddingBottom() + mTextRect.height()+mImage.getHeight();
             if(specMode == MeasureSpec.AT_MOST){ // wrap_content
-                height = Math.min(getPaddingTop() + getPaddingBottom() + specSize,desire);
+                height = Math.min(specSize, desire);
             }
         }
 
@@ -121,7 +120,7 @@ public class MyImageView extends View {
         //控件外矩形边框
         mPaint.setStrokeWidth(4);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setColor(Color.GREEN);
+        mPaint.setColor(Color.RED);
         canvas.drawRect(0,0,getMeasuredWidth(),getMeasuredHeight(),mPaint);
 
         rect.left = getPaddingLeft();
