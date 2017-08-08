@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:my="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.delta.myview.MainActivity">
+
+    <com.delta.myview.MyTitleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        my:titleText="wsf"
+        my:titleTextColor="#000000"
+        my:titleTextSize="40sp"
+        android:layout_centerInParent="true"/>
+    <!--<com.delta.myview.MyImageView
+        android:id="@+id/miv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        my:image=""/>-->
+
+</RelativeLayout>
