@@ -8,6 +8,13 @@
         <enum name = "fillXY" value="0"/>
         <enum name = "center" value="1"/>
     </attr>
+
+    <attr name="circleColor1" format="color" />
+    <attr name="circleColor2" format="color" />
+    <attr name="smallCirclePercent" format="fraction" />
+    <attr name="circleSpeed" format="integer" />
+    <!--<attr name="circleWidth" format="integer"/>-->
+
     <declare-styleable name="MyTitleView">
         <attr name="titleText"/>
         <attr name="titleTextColor"/>
@@ -19,5 +26,12 @@
         <attr name="titleTextSize"/>
         <attr name="image"/>
         <attr name="imageScaleType"/>
+    </declare-styleable>
+    <declare-styleable name="MyCircleProgressBar">
+        <attr name="circleColor1" />
+        <attr name="circleColor2" />
+        <attr name="smallCirclePercent" />
+        <attr name="circleSpeed" />
+        <!--<attr name="circleWidth"/>-->
     </declare-styleable>
 </resources>
