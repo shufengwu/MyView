@@ -88,23 +88,23 @@ public class MyImageView extends View {
             int desireByImg = getPaddingLeft() + getPaddingRight() + mImage.getWidth();
             int desireByTitle = getPaddingLeft() + getPaddingRight() + mTextRect.width();
             if (specMode == MeasureSpec.AT_MOST) { // wrap_content
-                int desire = Math.max(desireByImg,desireByTitle);
+                int desire = Math.max(desireByImg, desireByTitle);
                 width = Math.min(specSize, desire);
             }
         }
 
         specMode = MeasureSpec.getMode(heightMeasureSpec);
         specSize = MeasureSpec.getSize(heightMeasureSpec);
-        if(specMode==MeasureSpec.EXACTLY){
+        if (specMode == MeasureSpec.EXACTLY) {
             height = specSize;
-        }else{
-            int desire = getPaddingTop() + getPaddingBottom() + mTextRect.height()+mImage.getHeight();
-            if(specMode == MeasureSpec.AT_MOST){ // wrap_content
+        } else {
+            int desire = getPaddingTop() + getPaddingBottom() + mTextRect.height() + mImage.getHeight();
+            if (specMode == MeasureSpec.AT_MOST) { // wrap_content
                 height = Math.min(specSize, desire);
             }
         }
 
-        setMeasuredDimension(width,height);
+        setMeasuredDimension(width, height);
 
     }
 
@@ -121,30 +121,30 @@ public class MyImageView extends View {
         mPaint.setStrokeWidth(4);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(Color.RED);
-        canvas.drawRect(0,0,getMeasuredWidth(),getMeasuredHeight(),mPaint);
+        canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
 
         rect.left = getPaddingLeft();
-        rect.right = width-getPaddingRight();
+        rect.right = width - getPaddingRight();
         rect.top = getPaddingTop();
-        rect.bottom = height- getPaddingBottom();
+        rect.bottom = height - getPaddingBottom();
 
         mPaint.setColor(mTitleTextColor);
         mPaint.setStyle(Paint.Style.FILL);
 
-        if(mTextRect.width()>width){
+        if (mTextRect.width() > width) {
             //?????
             TextPaint paint = new TextPaint(mPaint);
             String msg = TextUtils.ellipsize(mTitleText, paint, (float) width - getPaddingLeft() - getPaddingRight(),
                     TextUtils.TruncateAt.END).toString();
-            canvas.drawText(mTitleText,getPaddingLeft(),height-getPaddingBottom(),mPaint);
-        }else{
-            canvas.drawText(mTitleText,width/2-mTextRect.width() * 1.0f / 2,height-getPaddingBottom(),mPaint);
+            canvas.drawText(mTitleText, getPaddingLeft(), height - getPaddingBottom(), mPaint);
+        } else {
+            canvas.drawText(mTitleText, width / 2 - mTextRect.width() * 1.0f / 2, height - getPaddingBottom(), mPaint);
         }
 
         rect.bottom -= mTextRect.height();
-        if(mImageScaleType == 0){
-            canvas.drawBitmap(mImage,null,rect,mPaint);
-        }else{
+        if (mImageScaleType == 0) {
+            canvas.drawBitmap(mImage, null, rect, mPaint);
+        } else {
             //计算居中的矩形范围
             rect.left = width / 2 - mImage.getWidth() / 2;
             rect.right = width / 2 + mImage.getWidth() / 2;

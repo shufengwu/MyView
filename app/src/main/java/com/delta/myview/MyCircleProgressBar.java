@@ -84,6 +84,24 @@ public class MyCircleProgressBar extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int width;
+        int height;
+        if (widthMode == MeasureSpec.EXACTLY) {
+            width = widthSize;
+        } else {
+            width = getWidth() + getPaddingLeft() + getPaddingRight();
+        }
+
+        if (heightMode == MeasureSpec.EXACTLY) {
+            height = heightSize;
+        } else {
+            height = getHeight() + getPaddingBottom() + getPaddingTop();
+        }
+        setMeasuredDimension(width, height);
     }
 
     @Override
@@ -94,10 +112,33 @@ public class MyCircleProgressBar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        int center = getWidth() / 2;
-        //Log.i(TAG, "onDraw: "+mSmallCirclePercent);
-        int radius = (int) ((float) center * mSmallCirclePercent);
-        mPaint.setStrokeWidth(center - radius);
+
+        int centerX = getWidth() / 2;
+        int centerY = getHeight() / 2;
+        int centerMin = Math.min(centerX, centerY);
+        int width = (int) (centerMin - centerMin * mSmallCirclePercent);
+        int radius = centerMin - width / 2;
+        mPaint.setStrokeWidth(width);
+        mPaint.setAntiAlias(true);
+        mPaint.setStyle(Paint.Style.STROKE);
+
+        RectF rectF = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+        if (isNext) {
+            mPaint.setColor(mCircleColor1);
+            canvas.drawCircle(centerX, centerY, radius, mPaint);
+            mPaint.setColor(mCircleColor2);
+            canvas.drawArc(rectF, -90, mProgress, false, mPaint);
+        } else {
+            mPaint.setColor(mCircleColor2);
+            canvas.drawCircle(centerX, centerY, radius, mPaint);
+            mPaint.setColor(mCircleColor1);
+            canvas.drawArc(rectF, -90, mProgress, false, mPaint);
+        }
+
+        /*int center = getWidth() / 2;
+        int width = (int) (center - center * mSmallCirclePercent);
+        int radius = center - width / 2;
+        mPaint.setStrokeWidth(width);
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
         RectF rectF = new RectF(center - radius, center - radius, center + radius, center + radius);
@@ -105,12 +146,12 @@ public class MyCircleProgressBar extends View {
             mPaint.setColor(mCircleColor1);
             canvas.drawCircle(center, center, radius, mPaint);
             mPaint.setColor(mCircleColor2);
-            canvas.drawArc(rectF, 0, mProgress, false, mPaint);
+            canvas.drawArc(rectF, -90, mProgress, false, mPaint);
         } else {
             mPaint.setColor(mCircleColor2);
             canvas.drawCircle(center, center, radius, mPaint);
             mPaint.setColor(mCircleColor1);
-            canvas.drawArc(rectF, 0, mProgress, false, mPaint);
-        }
+            canvas.drawArc(rectF, -90, mProgress, false, mPaint);
+        }*/
     }
 }

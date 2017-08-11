@@ -5,11 +5,11 @@
     android:layout_height="match_parent">
 
     <com.delta.myview.MyCircleProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:layout_centerInParent="true"
         my:circleColor1="#DDDDDD"
         my:circleColor2="#555555"
-        my:circleSpeed="5"
-        my:smallCirclePercent="80%" />
+        my:circleSpeed="2"
+        my:smallCirclePercent="90%" />
 </RelativeLayout>
