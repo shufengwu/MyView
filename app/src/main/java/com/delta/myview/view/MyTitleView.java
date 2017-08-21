@@ -1,4 +1,4 @@
-package com.delta.myview;
+package com.delta.myview.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,6 +11,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+
+import com.delta.myview.R;
 
 import java.util.Random;
 

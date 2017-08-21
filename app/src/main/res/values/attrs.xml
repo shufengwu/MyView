@@ -13,7 +13,6 @@
     <attr name="circleColor2" format="color" />
     <attr name="smallCirclePercent" format="fraction" />
     <attr name="circleSpeed" format="integer" />
-    <!--<attr name="circleWidth" format="integer"/>-->
 
     <declare-styleable name="MyTitleView">
         <attr name="titleText"/>

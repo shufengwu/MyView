@@ -1,4 +1,4 @@
-package com.delta.myview;
+package com.delta.myview.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,6 +9,8 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.delta.myview.R;
 
 /**
  * Created by Shufeng.Wu on 2017/8/10.

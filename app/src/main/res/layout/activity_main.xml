@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.delta.myview.MainActivity">
 
-    <com.delta.myview.MyTitleView
+    <com.delta.myview.view.MyTitleView
         android:id="@+id/mtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         my:titleTextColor="#000000"
         my:titleTextSize="40sp" />
 
-    <com.delta.myview.MyImageView
+    <com.delta.myview.view.MyImageView
         android:id="@+id/miv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
         my:titleTextColor="#0000FF"
         my:titleTextSize="20sp" />
 
-    <com.delta.myview.MyImageView
+    <com.delta.myview.view.MyImageView
         android:id="@+id/miv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         my:titleTextColor="#0000FF"
         my:titleTextSize="20sp" />
 
-    <com.delta.myview.MyImageView
+    <com.delta.myview.view.MyImageView
         android:id="@+id/miv3"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
         my:titleTextColor="#0000FF"
         my:titleTextSize="20sp" />
 
-    <com.delta.myview.MyImageView
+    <com.delta.myview.view.MyImageView
         android:id="@+id/miv4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
