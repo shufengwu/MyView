@@ -5,6 +5,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import static android.view.View.MeasureSpec.AT_MOST;
+import static android.view.View.MeasureSpec.EXACTLY;
+
 /**
  * Created by Shufeng.Wu on 2017/8/21.
  */
@@ -30,21 +33,11 @@ public class MyViewGroup extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        /*int count = getChildCount();
-        for(int i=0;i<count;i++){
-            View child = getChildAt(i);
-            measureChild(child,widthMeasureSpec,heightMeasureSpec);
-        }*/
-        measureChildren(widthMeasureSpec, heightMeasureSpec);
-        /*int totalWidth = 0;
-        int totalHeight = 0;
-        int count = getChildCount();
-        for(int i=0;i<count;i++){
-            View child = getChildAt(i);
-            totalWidth += child.getMeasuredWidth();
-            totalHeight = Math.max(totalHeight,child.getMeasuredHeight());
-        }
-        setMeasuredDimension(totalWidth,totalHeight);*/
+        //measureChildren(widthMeasureSpec, heightMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
         int count = getChildCount();
         int prevChildRight = 0;
@@ -53,17 +46,36 @@ public class MyViewGroup extends ViewGroup {
         int maxWidth = 0;
         for (int i = 0; i < count; i++) {
             View child = getChildAt(i);
+            int width = MeasureSpec.makeMeasureSpec(270, EXACTLY);
+            int height = MeasureSpec.makeMeasureSpec(150, AT_MOST);
+            child.measure(width, height);
             if (prevChildRight + child.getMeasuredWidth() > getWidth()) {
-                maxWidth = Math.max(maxWidth, prevChildRight + child.getMeasuredWidth());
+                maxWidth = Math.max(maxWidth, prevChildRight);
                 prevChildRight = 0;
                 prevChildBottom += maxHeight;
                 maxHeight = 0;
+            } else {
+                prevChildRight += child.getMeasuredWidth();
+                maxHeight = Math.max(maxHeight, child.getMeasuredHeight());
             }
-
-            prevChildRight += child.getMeasuredWidth();
-            maxHeight = Math.max(maxHeight, child.getMeasuredHeight());
         }
-        setMeasuredDimension(Math.max(maxWidth, prevChildRight), maxHeight + prevChildBottom);
+        /*if(widthMode== AT_MOST&&heightMode==AT_MOST){
+            setMeasuredDimension(Math.max(maxWidth, prevChildRight), maxHeight + prevChildBottom);
+        }else if(widthMode== AT_MOST){
+            setMeasuredDimension(Math.max(maxWidth, prevChildRight), heightSize);
+        }else if(heightMode==AT_MOST){
+            setMeasuredDimension(widthSize, maxHeight + prevChildBottom);
+        }*/
+        if (widthMode == EXACTLY && heightMode == EXACTLY) {
+            setMeasuredDimension(widthSize, heightSize);
+        } else if (heightMode == EXACTLY) {
+            setMeasuredDimension(Math.max(maxWidth, prevChildRight), heightSize);
+        } else if (widthMode == EXACTLY) {
+            setMeasuredDimension(widthSize, maxHeight + prevChildBottom);
+        } else {
+            setMeasuredDimension(Math.max(maxWidth, prevChildRight), maxHeight + prevChildBottom);
+        }
+
 
 
     }
