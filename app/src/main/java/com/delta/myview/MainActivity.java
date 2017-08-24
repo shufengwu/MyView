@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.delta.myview.event.ViewGroupEventActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button next;
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                startActivity(new Intent(MainActivity.this, ViewGroupEventActivity.class));
             }
         });
     }

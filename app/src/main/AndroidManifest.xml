@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".SecondActivity" />
         <activity android:name=".ThirdActivity" />
+        <activity android:name=".event.EventTestActivity" />
+        <activity android:name=".event.ViewGroupEventActivity"></activity>
     </application>
 
 </manifest>
